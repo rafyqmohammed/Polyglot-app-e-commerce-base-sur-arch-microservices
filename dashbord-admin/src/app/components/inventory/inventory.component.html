@@ -1,0 +1,81 @@
+<div class="container mt-3">
+  <h2>Inventory</h2>
+
+  <button class="btn btn-success mb-3" (click)="showAddForm()">
+    <i class="bi bi-plus-circle"></i> Ajouter
+  </button>
+
+  <!-- Formulaire d'ajout -->
+  <div *ngIf="addingProduct" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Ajouter un produit</h5>
+      <form [formGroup]="addForm" (ngSubmit)="saveNewProduct()">
+        <div class="mb-2">
+          <label class="form-label">Nom</label>
+          <input class="form-control" formControlName="name" required />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Quantité</label>
+          <input type="number" class="form-control" formControlName="quantity" required />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Prix</label>
+          <input type="number" class="form-control" formControlName="price" required />
+        </div>
+        <button type="submit" class="btn btn-success me-2">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelAdd()">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Formulaire de modification -->
+  <div *ngIf="editingProduct" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Modifier le produit</h5>
+      <form [formGroup]="editForm" (ngSubmit)="saveProduct()">
+        <div class="mb-2">
+          <label class="form-label">Nom</label>
+          <input class="form-control" formControlName="name" required />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Quantité</label>
+          <input type="number" class="form-control" formControlName="quantity" required />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Prix</label>
+          <input type="number" class="form-control" formControlName="price" required />
+        </div>
+        <button type="submit" class="btn btn-success me-2">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.quantity }}</td>
+        <td>{{ p.price }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-1" title="Modifier" (click)="editProduct(p)">
+            <i class="bi bi-pencil"></i> Modifier
+          </button>
+          <button class="btn btn-sm btn-danger" title="Supprimer" (click)="deleteProduct(p.id)">
+            <i class="bi bi-trash"></i> Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

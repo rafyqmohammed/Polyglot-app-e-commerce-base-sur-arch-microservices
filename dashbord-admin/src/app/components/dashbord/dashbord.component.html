@@ -1,0 +1,35 @@
+<div class="d-flex vh-100">
+  <!-- Sidebar -->
+  <div class="bg-light border-end" style="width: 250px;">
+    <div class="p-3 border-bottom text-center">
+      <img src="assets/userAdmin.jpeg" alt="Avatar" width="64" height="64" class="rounded-circle" />
+      <h6 class="fw-bold mb-0">Mohammed Rafyq</h6>
+      <small class="text-muted">Admin</small>
+    </div>
+
+    <ul class="nav flex-column mt-3">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">📊Dashbord</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/customers">👥 Customers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/billing">💳 Billing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/inventory">📦 Inventory</a>
+      </li>
+    </ul>
+
+    <div class="mt-auto p-3 border-top">
+      <!-- <button class="btn btn-outline-danger w-100" (click)="logout()">🚪 Déconnexion</button> -->
+       <button class="btn btn-outline-danger w-100" >🚪 Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="flex-grow-1 p-4 overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>
